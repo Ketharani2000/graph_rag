@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="https://www.vmware.com/content/dam/digitalmarketing/onetrust/assets/js/jquery-1.11.0.min.js"></script>
+    <!-- OneTrust Cookies Consent Notice start -->
+    <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8"
+        data-domain-script="8f4d3580-4337-499c-b909-13704811568b"></script>
+    <script
+        type="text/javascript"> function OptanonWrapper() { { window.dataLayer.push({ event: 'OneTrustGroupsUpdated' }); } }</script>
+    <!-- OneTrust Cookies Consent Notice end -->
+
+    <meta charset="utf-8">
+    <title>VMware Configuration Maximum tool</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="keywords" content="configmax,VMware configmax,Vsphere configmax,NSX configmax">
+    <meta name="title" content="VMware Configuration Maximum tool">
+    <meta name="description"
+        content="This Configuration Maximums tool provides the recommended configuration limits for VMware products. When you configure, deploy and operate your virtual and physical equipment, it is highly recommended you stay at or below the maximums supported by your product. The limits presented in the tool are tested, recommended limits, and are fully supported by VMware.">
+    <link rel="icon" type="image/x-icon" href="//www.vmware.com/favicon.ico">
+    <script src="js/feedback-form.js"></script>
+</head>
+
+<body>
+    <configmax-app>
+        <span class="spinner spinner-md">
+        </span>
+    </configmax-app>
+<script type="text/javascript" src="inline.a07175516c55c4014717.bundle.js"></script><script type="text/javascript" src="styles.454069607deeb84d2b3d.bundle.js"></script><script type="text/javascript" src="scripts.1427335c2607fdda6f1a.bundle.js"></script><script type="text/javascript" src="vendor.aa9ef5b28a6f7c7289ad.bundle.js"></script><script type="text/javascript" src="main.cff2b5ec0ebb979a0cae.bundle.js"></script></body>
+
+</html>

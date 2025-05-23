@@ -1,0 +1,1169 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  lang="en">
+
+
+
+
+ 
+
+
+<head>
+
+<meta name="description" content="A design model for VMware Cloud Foundation (also called VCF) that is based on industry best practices for SDDC implementation.">
+
+
+
+
+    
+<!--
+<sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call=""/>
+  -->
+<!-- OneTrust Cookies Consent Notice start for broadcom-aem-dev-pub1.herodigital.com -->
+
+
+
+    <script defer="defer" type="text/javascript" src="https://rum.hlx.page/.rum/@adobe/helix-rum-js@%5E2/dist/rum-standalone.js" data-routing="env=prod,tier=publish,ams=Broadcom Corporation TechDocs2" integrity="" crossorigin="anonymous" data-enhancer-version="" data-enhancer-hash=""></script>
+<script src="" type="text/javascript" charset="UTF-8" nonce="brcmtd2409pThL2s9R8o9Q=="></script>
+
+    <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="6a5fee8c-80be-4b9a-ab7e-b607e3f8ad3e" nonce="brcmtd2409pThL2s9R8o9Q=="></script>
+
+    <script type="text/javascript" nonce="brcmtd2409pThL2s9R8o9Q==">
+        function OptanonWrapper() {
+            var targettingCookiesEnabled = false;
+            var functoinCookeisEnabled = false;
+            if (OnetrustActiveGroups) {
+                var split = OnetrustActiveGroups.split(',');
+                for (var i = 0; i < split.length; i++) {
+                    if (split[i] === 4 || split[i] === '4') {
+                        targettingCookiesEnabled = true;
+                    }
+                }
+            }
+
+            if (targettingCookiesEnabled) {
+                $('.onetrust-message-4').removeClass('hidden');
+                $('.onetrust-message-4').addClass('hidden');
+
+                $('object[data-onetrust]').each(function(index, elem) {
+                    var attrVal = $(this).attr('data-onetrust');
+                    $(this).attr('data', attrVal);
+                    $(this).removeAttr('data-onetrust');
+                })
+            } else {
+                $('.onetrust-message-4').removeClass('hidden');
+
+                $('object[data]').each(function(index, elem) {
+                    var attrVal = $(this).attr('data');
+                    $(this).attr('data-onetrust', attrVal);
+                    $(this).removeAttr('data');
+                })
+            }
+        }
+    </script>
+
+<!-- OneTrust Cookies Consent Notice end for broadcom-aem-dev-pub1.herodigital.com -->
+
+<base href="#"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="icon" type="image/x-icon" href="favicon.ico"/>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+
+
+<title>Design Guide</title>
+
+<!-- <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html" data-sly-call=""/> -->
+
+
+
+
+    
+    
+<link rel="stylesheet" href="/etc.clientlibs/broadcom/techdocs2/clientlibs/clientlib-site.min.6205cc39f9208becda8d4ee8a3c0403a.css" type="text/css"/>
+<link rel="stylesheet" href="/etc.clientlibs/broadcom/techdocs2/clientlibs/clientlib-base.min.5655e74b95003532feb02ca2297dba89.css" type="text/css"/>
+
+
+
+
+
+
+
+
+<!-- <sly data-sly-use.pathChecker="broadcom.core.models.PathChecker">
+
+    <sly data-sly-test="">
+        <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+             data-sly-call="org.apache.sling.scripting.sightly.libs.granite.sightly.templates.clientlib__002e__html$2@6efbfef0"/>
+    </sly>
+
+    <sly data-sly-test="true">
+        <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+             data-sly-call="org.apache.sling.scripting.sightly.libs.granite.sightly.templates.clientlib__002e__html$2@6efbfef0"/>
+    </sly>
+
+</sly> -->
+
+<!--/* Include Context Hub */
+<sly data-sly-resource="contexthub"/>
+-->
+
+
+
+	<script type="application/ld+json" nonce="brcmtd2409pThL2s9R8o9Q==">
+        {"spacename":"VMware Cloud Foundation 5.1","keywords":"","@type":"Article","author":"CA Inc","alternateName":"","dateModified":"Tue Apr 15 2025 10:42:13 GMT+0000","language":"en","mainEntityOfPage":{"@type":"Webpage","URL":"/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1"},"@context":"http://schema.org","url":"/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1","datePublished":"2025-04-15T10:46:03.363Z","spacekey":"","currentpagetitle":"Design Guide","appname":[],"appid":[],"name":"Design Guide","siteversion":"5-1","publisher":{"@type":"Organization","name":"CA INC","logo":{"@type":"ImageObject","url":"https://static.broadcom.com/static/css/img/logo-broadcom-bw.png"}},"productname":"VMware Cloud Foundation","searchurl":"/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/search.html","supportid":["1600032","1600187","1600188"],"ux-context-string":[],"headline":"Design Guide"}
+
+     </script>
+
+
+
+<script id="gtmScript" nonce="brcmtd2409pThL2s9R8o9Q==" data-nonce="brcmtd2409pThL2s9R8o9Q==" class="optanon-category-2">
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; var n = d.querySelector('[nonce]');
+        n && j.setAttribute('nonce', n.nonce || n.getAttribute('nonce')); f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KF7XWD');
+</script>
+
+
+
+
+
+
+
+ 
+	
+<!-- <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call=""/> -->
+
+
+    
+        
+    
+
+
+
+             <script src="/etc.clientlibs/aem-site-template-dxml/broadcom/techdocs2/granite/jquery.min.3e24d4d067ac58228b5004abb50344ef.js"></script>
+             <script src="/etc.clientlibs/aem-site-template-dxml/broadcom/techdocs2/granite/utils.min.3b86602c4e1e0b41d9673f674a75cd4b.js"></script>
+     <script src="/etc.clientlibs/aem-site-template-dxml/broadcom/techdocs2/granite/jquery/granite.min.011c0fc0d0cf131bdff879743a353002.js"></script>
+             <script src="/etc.clientlibs/broadcom/techdocs2/clientlibs/clientlib-site.min.c805a7c603907f76c83cad12136a7892.js"></script>
+             <script src="/etc.clientlibs/broadcom/techdocs2/clientlibs/clientlib-base.min.9c6ecf37abe41edeafa6651ab84195d8.js"></script>
+    
+    
+        
+
+
+    <script src="https://searchunify.broadcom.com/resources/Allow/an.js?uid=e95e476a-e759-11ea-beba-0242ac12000b" type="text/plain" class="optanon-category-2" charset="UTF-8" nonce="brcmtd2409pThL2s9R8o9Q=="></script>
+ 
+</head>
+
+
+
+
+
+
+
+
+          
+
+
+
+
+<body class="">
+
+   <div class="gtm-noscript">
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KF7XWD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+</div>
+
+   <input type="hidden" data-path="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1" id="connectorsPath"/>
+   <input type="hidden" data-path="2025-04-15T10:42:13.044Z" id="lastmodified"/>
+   <!-- Modified Code -->
+   <div class="header">    <header class="bc-ang-header" role="banner">
+	<div class="container-fluid">
+		<div class="position-relative">
+			<nav class="navbar navbar-expand-lg navbar-light dropdown" role="navigation">
+				<div class="navbar-brand-wrapper">
+					<button class="fa fa-bars toggle-menu d-block d-lg-none" id="mobileMenuToggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03, #header-search-control" aria-controls="navbarTogglerDemo03 header-search-control" aria-expanded="false" aria-label="Toggle navigation">
+						<span>MENU</span>
+					</button>
+					<a class="navbar-brand" href="https://www.broadcom.com" aria-label="Broadcom"></a>
+				</div>
+				
+					
+						<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+
+							<ul class="navbar-nav">
+
+								
+									<li class="nav-item">
+										<a class="nav-link" href="https://www.broadcom.com/products/">Products</a>
+									</li>
+								
+									<li class="nav-item">
+										<a class="nav-link" href="https://www.broadcom.com/solutions/">Solutions</a>
+									</li>
+								
+									<li class="nav-item">
+										<a class="nav-link" href="https://www.broadcom.com/support/">Support and Services</a>
+									</li>
+								
+									<li class="nav-item">
+										<a class="nav-link" href="https://www.broadcom.com/company/">Company</a>
+									</li>
+								
+									<li class="nav-item">
+										<a class="nav-link" href="https://www.broadcom.com/how-to-buy/">How To Buy</a>
+									</li>
+								
+								<li class="nav-item d-lg-none mt-3 mob-login loggedOutUser">
+									
+										<div class="dropdown">
+											<button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Login
+											</button>
+											<div class="dropdown-menu">
+												<div class="dropdown-wrapper">
+													<div class="my-account">myBroadcom Account:</div>
+													<div class="login-btn-wrapper">
+														<a class="btn btn-login" href="https://access.broadcom.com/default/saml/v1/idp/login?appId=bee0d0aa-6aa9-4dbf-a48d-dd47cf0dd8a0">Login</a>
+														<a class="btn btn-register" href="https://profile.broadcom.com/web/registration">Register</a>
+													</div>
+													<div>
+														<a class="forgot-pswd" href="https://profile.broadcom.com/web/forgot-password">Forgot
+															Username/Password?</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									
+								</li>
+								<li class="nav-item d-lg-none mt-3 mob-login loggedInUser">
+									<div class="dropdown">
+										<button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Username
+										</button>
+										<div class="dropdown-menu">
+											<a class="dropdown-item" href="https://portal.broadcom.com/group/user/editprofile">Edit My
+												Profile</a>
+											<a class="dropdown-item" href="https://support.broadcom.com/user/user_redirect?dest=user">myBroadcom</a>
+											
+												<a href="/system/sling/logout.html" class="btn btn-default">Logout</a>
+											
+										</div>
+									</div>
+								</li>
+								<li class="nav-item d-block d-lg-none mob-langselector">
+									<div class="dropdown">
+										<button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Language
+										</button>
+										<div class="dropdown-menu">
+											<ul class="language-selector-list">
+												<li>
+													<a href="https://www.broadcom.com">
+														English
+													</a>
+												</li>
+												<li>
+													<a href="https://jp.broadcom.com">
+														日本語
+													</a>
+												</li>
+												<li>
+													<a href="https://www.broadcom.cn">
+														中文
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</li>
+							</ul>
+				</div>
+				<div class="menu-bg"></div>
+				<nav class="secondary-nav d-none d-lg-block">
+					<ul class="nav nav-stacked">
+						<!-- Login -->
+						<li class="dropdown login loggedOutUser">
+							
+								<button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Login
+								</button>
+								<div class="dropdown-menu">
+									<div class="dropdown-wrapper">
+										<div class="my-account">myBroadcom Account:</div>
+										<div class="login-btn-wrapper">
+											<a class="btn btn-login" href="https://access.broadcom.com/default/saml/v1/idp/login?appId=bee0d0aa-6aa9-4dbf-a48d-dd47cf0dd8a0">Login</a>
+											<a class="btn btn-register" href="https://profile.broadcom.com/web/registration">Register</a>
+										</div>
+										<div>
+											<a class="forgot-pswd" href="https://profile.broadcom.com/web/forgot-password">Forgot
+												Username/Password?</a>
+										</div>
+									</div>
+								</div>
+							
+						</li>
+						<li class="dropdown loggedInUser">
+							<button type="button" tabindex="0" class="dropdown-toggle showUserName" data-bs-toggle="dropdown" aria-expanded="false">Username
+							</button>
+							<div class="dropdown-menu language">
+								<a class="dropdown-item" href="https://portal.broadcom.com/group/user/editprofile">Edit My
+									Profile</a>
+								<a class="dropdown-item" href="https://support.broadcom.com/user/user_redirect?dest=user">myBroadcom</a>
+								
+									<a class="dropdown-item mb-3" tabindex="0" href="/system/sling/logout.html">
+										Logout
+									</a>
+								
+							</div>
+						</li>
+						<!-- End of Login -->
+						<li class="dropdown">
+							<button type="button" tabindex="0" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">English</button>
+							<div class="dropdown-menu language">
+								<a class="dropdown-item mb-3" tabindex="0" href="https://jp.broadcom.com" lang="ja">
+									<span class="d-block d-lg-none fa fa-check-circle"></span>
+									日本語
+								</a>
+								<a class="dropdown-item" tabindex="0" href="https://www.broadcom.cn" lang="zh">
+									<span class="d-block d-lg-none fa fa-check-circle"></span>
+									中文
+								</a>
+							</div>
+						</li>
+					</ul>
+						
+				</nav>
+				
+						
+				
+					
+						
+							<input type="hidden" id="ajaxSearchLink" value="https://api.swiftype.com/api/v1/public/engines/suggest.json?callback=jQuery111108956332510755289_1550482155945&amp;q={query}&amp;engine_key=-YxE_JXFEvU4sfy-biZV&amp;filters%5Bpages%5D%5BAssetType%5D=AVG_Product_C&amp;filters%5Bpages%5D%5Blocale%5D=avg_en&amp;_=1550482155946"/>
+						
+					
+				
+				
+					
+						
+							<form class="form-inline d-lg-block predictive-search-form collapse" id="header-search-control" role="search" method="GET" action="https://www.broadcom.com/site-search">
+								<div class="autocomplete">
+									<input class="form-control predictive-search" type="search" placeholder="SEARCH" aria-label="Search" id="bcAppSearch" name="q" autocomplete="off"/>
+									<button role="button" aria-label="Search" class="fa fa-search my-sm-0" type="submit"></button>
+								</div>
+							</form>
+							<form class="form-inline my-2 pt-lg-3 predictive-search-form d-none" id="bcAppMobSearchForm" role="search" method="GET" action="https://www.broadcom.com/site-search">
+								<div class="autocomplete">
+									<div class="dropdown">
+										<button role="button" aria-label="Search" class="fa fa-search my-2 my-sm-0 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+										<div class="dropdown-menu">
+											<input class="form-control predictive-search" type="search" placeholder="Search" aria-label="Search" id="bcAppMobSearch" name="q" autocomplete="off"/>
+										</div>
+									</div>
+								</div>
+							</form>
+						
+					
+				
+			</nav>
+		</div>
+	</div>
+</header></div>
+
+   
+   <div class="container">
+      <div class="product-search-topic-header">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-12">
+                  <div class="breadcrumb_navigation_links breadcrumb-navigation-links">
+    <div class="d-flex">
+        
+        <nav aria-label="Breadcrumb" class="bc-nav">
+            <ul class="d-flex flex-wrap">
+                <li><a class="d-flex align-items-center" href="/"><span class="bc-home-icon"></span><span class="sr-only">Home</span></a></li>
+                
+                    <li>
+                        <a href="/us/en/vmware-cis.html">VMware® Cloud Infrastructure Software</a>
+                    </li>
+                
+                    <li>
+                        <a href="/us/en/vmware-cis/vcf.html">VMware Cloud Foundation</a>
+                    </li>
+                
+                    <li>
+                        <a href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1.html">VMware Cloud Foundation 5.1</a>
+                    </li>
+                
+                    <li>
+                        <a href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1.html">Design Guide</a>
+                    </li>
+                
+            </ul>
+        </nav>
+            
+    </div>
+
+</div>
+
+               </div>
+               <div class="topic-header"><div class="topic-header-inner">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 topic-header-inner__wrapper px-0">
+                <div class="topic-header-inner__title">
+                    
+
+
+
+<div class="title-banner">
+
+    <h1 tabindex="0">
+        
+    <a class="col-lg-12 px-0" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1.html">VMware Cloud Foundation 5.1</a>
+    
+	
+    </h1>
+</div>
+
+
+
+                </div>
+                <div class="topic-header-inner__utility">
+                    
+
+
+                    <div class="col-12 no-pad-right">
+<div class="dropdown bc-version-dropdown">
+
+
+  <button class="btn btn-lg dropdown-toggle bc-version-dropdown-btn" data-versionid="5.1" type="button" id="version-dropdown-btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="dropdown-text">Version</span>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="version-dropdown-btn">
+
+	
+	
+     <a class="dropdown-item" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-2.html">5.2</a>
+	
+  	
+	
+     <a class="dropdown-item" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1.html">5.1</a>
+	
+  	
+	
+     <a class="dropdown-item" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-0.html">5.0</a>
+	
+  	
+	
+     <a class="dropdown-item" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/4-5.html">4.5</a>
+	
+  	
+
+  </div>
+  
+  
+</div>
+</div>
+
+                    
+    
+
+        <div class="col-12 no-pad-right">
+            <div class="dropdown bc-language-dropdown">
+
+                <button class="btn btn-lg dropdown-toggle bc-language-dropdown-btn" data-languageid="English" type="button" id="language-dropdown-btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="dropdown-text">Language</span>
+                </button>
+
+                <div class="dropdown-menu" aria-labelledby="language-dropdown-btn">
+                    
+                    
+                        <a class="dropdown-item" href="/fr/fr/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1.html">Français</a>
+                    
+                    
+                    
+                        <a class="dropdown-item" href="/it/it/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1.html">Italiano</a>
+                    
+                    
+                    
+                        <a class="dropdown-item" href="/jp/ja/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1.html">日本語</a>
+                    
+                    
+                    
+                        <a class="dropdown-item" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1.html">English</a>
+                    
+                    
+                </div>
+
+            </div>
+        </div>
+    
+
+
+                    <div class="product-landing-search-wrapper">
+    
+
+         
+         <script type="text/javascript">
+             var isTD2 = true;  // Ensure you access the correct property
+        </script>
+
+    
+
+
+        <form action="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/search.html" method="GET" class="product-landing-search-form" role="search" data-call-analytics="true">
+            <button type="submit" aria-label="Search" class="fa fa-search product-landing-search-icon"></button>
+            <input type="text" id="product-landing-search" name="q" placeholder="Search this product" aria-label="Search this product. When autocomplete results are available use up and down arrows to review and enter to select." autocomplete="off" data-searchlink="/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/search.html" data-siteTitle="VMware Cloud Foundation 5.1"  data-pageName="Design Guide"/>
+        </form>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="topic-full-width">
+    </div>
+</div></div>
+
+            </div>
+         </div>
+      </div>
+      <div class='row'>
+         <div class="col-12 col-lg-3 product-landing-left-nav is-active">
+            <div class="leftnav-toggle">
+               <button class="toggle-sidebar is-active">
+               <span class="sr-only">Open/Close Topics Navigation</span>
+               </button>
+            </div>
+            <div class="dropdown left-content-mobile">
+               <button type="button" class="btn dropdown-toggle show-left-content-mobile d-block d-lg-none" data-bs-toggle="dropdown">
+               Product Menu
+               <span class="fa fa-chevron-down float-right"></span>
+               </button>
+               <div class="dropdown-menu">
+                  <div class="toc tableofcontentsmod tableofcontents">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+
+
+
+
+    <!-- <link rel="stylesheet" href="/etc.clientlibs/fmdita/clientlibs/rhjs.min.css" type="text/css"/>
+<link rel="stylesheet" href="/etc.clientlibs/fmdita/clientlibs/siteoutput/default/tableofcontents.min.css" type="text/css"/>
+<script src="/etc.clientlibs/fmdita/clientlibs/rhjs.min.js"></script>
+<script src="/etc.clientlibs/fmdita/clientlibs/siteoutput/default/tableofcontents.min.js"></script>
+ -->
+    
+    <div class="tocContainer" data-rhwidget="Basic" role="navigation">
+      <h3 class="tocContainer__title">Topics</h3>
+      <div class="loader"></div>
+        <ul id="accordion" class="tocList" aria-label="Table of Contents Accordion"></ul>
+        <script type="text/javascript" nonce="brcmtd2409pThL2s9R8o9Q==">
+             var tocServletPath = '/bin/broadcom/techdocs2/TOCServlet';
+            $('tocList').hide();
+            $.getJSON(tocServletPath,{basePath:'/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1'},function(data, textStatus, jqXHR) {
+
+                createTOCLoop(data, "accordion");
+
+                $('.tocList').html(tocElement);
+                $('.loader').hide();
+                $('.tocList').show();
+
+                $('.tocList .collapse').on('shown.bs.collapse', function (e) {
+
+                    if ($(this).is(e.target)){
+                        $(this).attr("aria-current", true);
+                        $(this).parent('li').addClass('active-acc');
+                        $('ul.show').last().find('li.active-acc').addClass('has-border');
+                        $(this).parent('li').children('a').last().removeClass('fa-plus').addClass('fa-minus');
+                    }
+                });
+
+                $('.tocList .collapse').on('hidden.bs.collapse', function (e) {
+
+                    if($(this).is(e.target)){
+                        $(this).removeAttr("aria-current");
+                        $(this).parent('li').removeClass('active-acc');
+                        $(this).parent('li').children('a').last().removeClass('fa-minus').addClass('fa-plus');
+                    }
+                });
+
+                collapseAndSelectCurrentPageAtTOC();
+                leftNavScrollTimer = setInterval(leftNavScroll, 300);
+            });
+
+            var tocElement = '';
+            function createTOCLoop (thisArray, referParentID) {
+
+                $.each(thisArray, function(index, value) {
+                  
+                    var htmlItemTitle = value.title.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                    var htmlItemLink = value.link;
+
+                    if(value.children.length <= 0) {
+                        if(referParentID == "accordion") {
+                            tocElement += '<li class="parent"><a class="toc-title col-12" href="'+ htmlItemLink +'"><span>' + htmlItemTitle + '</span></a>';
+                        } else {
+                            tocElement += '<li><a class="toc-title col-12" href="'+htmlItemLink+'"><span>' + htmlItemTitle + '</span></a>';
+                        }
+                    }
+                    else if(value.children.length > 0) {
+                        if(referParentID == "accordion") {
+                            tocElement += '<li class="parent"><a class="toc-title col-9 col-lg-8" href="'+htmlItemLink+'">' + htmlItemTitle + '</a><a tabindex="0" aria-label="' + htmlItemTitle + '" role="button" class="col-1 fa fa-plus toc-arrow" aria-label="Click to Expand" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#toc'+frameid(htmlItemLink+''+htmlItemTitle)+'" href="#toc'+frameid(htmlItemLink+''+htmlItemTitle)+'"></a><ul data-parent="#'+ referParentID +'" class="collapse" id="toc'+frameid(htmlItemLink+''+htmlItemTitle)+'">';
+                        } else {
+                            tocElement += '<li><a class="toc-title col-9 col-lg-8" href="'+htmlItemLink+'">' + htmlItemTitle + '</a><a tabindex="0" aria-label="' + htmlItemTitle + '" role="button" class="col-1 fa fa-plus toc-arrow" aria-label="Click to Expand" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#toc'+frameid(htmlItemLink+''+htmlItemTitle)+'" href="#toc'+frameid(htmlItemLink+''+htmlItemTitle)+'"></a><ul data-parent="#'+ referParentID +'" class="collapse" id="toc'+frameid(htmlItemLink+''+htmlItemTitle)+'">';
+                        }
+                        createTOCLoop(value.children, ""+("toc"+frameid(htmlItemLink+''+htmlItemTitle)));
+                        tocElement += '</ul>';
+                    }
+                    tocElement += '</li>';
+                });
+            }
+
+            function frameid (id) {
+                var strid = id.replace(/[^\w\s]/gi, '').split("_").join("").split(" ").join("");
+                return strid;
+            }
+
+            var leftNavScrollTimer;
+
+            function leftNavScroll() {
+                if($('ul.show').last().find('li.active-acc.has-border').length > 0){
+                    document.getElementsByClassName("toc tableofcontentsmod tableofcontents")[0].scrollTop = $('ul.show').last().find('li.active-acc.has-border')[0].offsetTop -100;
+                    clearLeftNavScrollTimer();
+                }else{
+                    if($('ul.tocList').last().find('li.active-acc.has-border').length > 0){
+                        document.getElementsByClassName("toc tableofcontentsmod tableofcontents")[0].scrollTop = $('ul.tocList').last().find('li.active-acc.has-border')[0].offsetTop -100;
+                        clearLeftNavScrollTimer();
+                    }else if($('ul.tocList').last().find('li.active-acc').length > 0){
+                        document.getElementsByClassName("toc tableofcontentsmod tableofcontents")[0].scrollTop = $('ul.tocList').last().find('li.active-acc')[0].offsetTop -100;
+                        clearLeftNavScrollTimer();
+                    }
+                }
+            }
+
+            function clearLeftNavScrollTimer() {
+              clearInterval(leftNavScrollTimer);
+            }
+
+            function collapseAndSelectCurrentPageAtTOC(){
+                var currentPagePath = window.location.pathname + window.location.hash;
+                var currentPagePathSplit = currentPagePath.split(['#']);
+                currentPagePath = currentPagePathSplit[0];
+
+                if(currentPagePath.startsWith("/content/broadcom/techdocs")){
+                    currentPagePath = currentPagePath.split("/content/broadcom/techdocs")[1];
+                }
+
+                $(".toc-title").each(function(index, tocElement) {
+                    var thisHref = $(this).attr("href");
+                    var thisHrefSplit = thisHref.split(['#']);
+                    thisHref = thisHrefSplit[0];
+
+
+
+                    $(this).removeClass('active-acc');
+
+                    if(thisHref === currentPagePath) {
+                        $(this).attr("aria-current", true);
+                        $(this).closest(".parent").addClass("active-acc");
+                        $(this).parents(".collapse").collapse('show');
+                        //$(this).parents(".collapse").parents("li").addClass("active-acc");
+                        $(this).parents("li").addClass("active-acc");
+                        $(".active-acc").children(".collapse").each(function(index, child){
+                            $(this).collapse('show');
+                        });
+
+                        $('li.active-acc').each(function () {
+                            if ($(this).children('ul').length > 0) {
+                                $(this).removeClass('has-border');
+                                $(this).addClass('remove-border');
+                            }
+                        })
+
+                    }
+
+                });
+
+            }
+      	</script>
+    </div>
+
+</div>
+
+               </div>
+            </div>
+         </div>
+         <div class="col-12 col-lg-8 offset-lg-1 product-detail px-lg-0">
+            <!-- Include Template Header -->
+            <main class="clearfix">
+               <section id="section">
+                  <!-- Topic Header
+                     
+
+
+
+
+
+          
+
+
+
+
+<div class="topicheader">
+  <div class="breadcrumb"></div>
+  <div class="mobile-open-toc-button"></div>
+  
+</div>
+                     -->
+                  <div class="par parsys">
+                     <div class="topic section">
+                        <!-- Topic Content -->
+                        <div class="contentnode parsys"><div class="topic section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="topic topic concept" id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en" >
+
+    <h1 class="title"><div  style="display: inline;">Design Guide</div></h1>
+
+    <div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_shortdesc_F54CF61CC3D2413D9822065E2BF0AF57" class="shortdesc"><div  style="display: inline;"> A design model for <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> (also called VCF) that is based on industry best practices for SDDC implementation. <span class="ph"><div  style="display: inline;"></div></span></div></div>
+
+    <div  style="display: inline;"><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_p_F3EE18045DEC419AB5063619B8D648D2" class="p"><div  style="display: inline;">The <cite id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_CITE_6159561C-00D1-4EF1-B826-2610023E2820" class="cite"><div  style="display: inline;"><span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> Design Guide</div></cite> provides the supported design options for <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span>, and a set of decision points, justifications, implications, and considerations for building each component.</div></div><section id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-f2084554-7fcf-4d06-fbb0-69757c925d6a" class="section"><div  style="display: inline;"><h2 id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-0b7531b1-b497-4478-831b-224472f39f60" class="title"><div  style="display: inline;">Intended Audience</div></h2><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-3403cf4c-4ce0-4caa-ee4d-fde63fadb08a" class="p"><div  style="display: inline;">This <cite id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_CITE_2F20B0EF-F4B8-4C35-A73F-9488D608CFAB" class="cite"><div  style="display: inline;"><span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> Design Guide</div></cite> is intended for cloud architects who are familiar with and want to use <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> to deploy and manage an SDDC that meets the requirements for capacity, scalability, backup and restore, and extensibility for disaster recovery support.</div></div></div></section><section id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_section_CA1576BDFB18480B84E10FA3498C78D1" class="section"><div  style="display: inline;"><h2 id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_title_8AFCED1612BF48EA9B97529C5ECC3C37" class="title"><div  style="display: inline;">Before You Apply This Guidance</div></h2><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_p_DDE354C04A66458A9B6F3CF1B95F2A96" class="p"><div  style="display: inline;">The sequence of the <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> documentation follows the stages for implementing and maintaining an SDDC.</div></div><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_P_CA126F74-053D-4A6B-8AFF-F4E2FC4907F2" class="p"><div  style="display: inline;">To apply this <cite id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_CITE_D02B8532-0E4D-45BC-962A-1BD999666E1E" class="cite"><div  style="display: inline;"><span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> Design Guide</div></cite>, you must be acquainted with the <cite id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_CITE_9335E26E-1453-4012-A34B-C86E233C168A" class="cite"><div  style="display: inline;">Getting Started with <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span></div></cite> documentation and with the <cite id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_CITE_710015A4-C434-4603-8A12-09821B11F3B2" class="cite"><div  style="display: inline;">VMware Cloud Foundation Release Notes</div></cite>. See <a class="xref" href="https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1.html" title="" data-scope="external" data-format="html" data-type="" target="_blank">VMware Cloud Foundation documentation</a>.</div></div><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_P_D6B6A8DF-BB88-42FD-8604-FBF3FF08424E" class="p"><div  style="display: inline;">For performance best practices for vSphere, see <a class="xref" href="https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/techpaper/performance/vsphere-esxi-vcenter-server-80U1-performance-best-practices.pdf" title="" data-scope="external" data-format="dita" data-type="" target="_blank">Performance Best Practices for VMware vSphere 8.0 Update 1</a>.</div></div></div></section><section id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-07fda780-003a-4d6f-8710-5f7cf337ec21" class="section"><div  style="display: inline;"><h2 id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-39c7edeb-c2b1-4cbe-fecb-a6bfb8828c01" class="title"><div  style="display: inline;">Design Elements</div></h2><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-d4e4710c-3980-4e84-ed8d-18fee64b611c" class="p"><div  style="display: inline;">This <cite id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_CITE_60A85E87-CC6A-469D-B895-DA74DE609607" class="cite"><div  style="display: inline;"><span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> Design Guide</div></cite> contains requirements and recommendations for the design of each component of the SDDC. In situations where a configuration choice exists, requirements and recommendations are available for each choice. Implement only those of them that are relevant to your target configuration.
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <table  class="table" >
+    <div  style="display: inline;">
+
+
+
+
+
+
+
+<!--cq:include script="../../common/tablestack.jsp" /-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<colgroup >
+  <col style="width: 50.0%" /><col style="width: 50.0%" /></colgroup>
+<div  style="display: inline;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<thead class="thead" >
+  <div  style="display: inline;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr class="row"><div  style="display: inline;"><th  class="entry"><div  style="display: inline;"><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-7c45e07c-797d-468d-ea2c-938ed9c6be6a" class="p"><div  style="display: inline;">Design Element</div></div></div></th><th  class="entry"><div  style="display: inline;"><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-b0592517-baa2-4688-f9cd-0f330a118489" class="p"><div  style="display: inline;">Description</div></div></div></th></div></tr>
+</div>    
+</thead>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tbody class="tbody"><div  style="display: inline;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr class="row"><div  style="display: inline;"><td  class="entry" ><div  style="display: inline;"><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-f9c0dac4-56ac-4791-ea49-96fabfbce2a5" class="p"><div  style="display: inline;">Requirement</div></div></div></td><td  class="entry" class="entry relcol" ><div  style="display: inline;"><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-e5a18f89-686a-4f73-9775-2b38a218dd4d" class="p"><div  style="display: inline;">Required for the operation of <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span>. Deviations are not permitted.</div></div></div></td></div></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr class="row"><div  style="display: inline;"><td  class="entry" ><div  style="display: inline;"><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-1f6e5479-4905-47e7-a093-c35861d45660" class="p"><div  style="display: inline;">Recommendation</div></div></div></td><td  class="entry" class="entry relcol" ><div  style="display: inline;"><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-dd1b380c-8765-434d-baaa-c5c85a651e16" class="p"><div  style="display: inline;">Recommended as a best practice. Deviations are permitted.</div></div></div></td></div></tr>
+</div></tbody>
+</div>
+</div> 
+  </table>
+</div></div></div></section><section id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_GUID-74AF583E-3814-4845-9A4A-E53EAB2A9D68" class="section"><div  style="display: inline;"><h2 id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_GUID-E0603E95-9B31-4FAF-8611-4C778A4EB5F6" class="title"><div  style="display: inline;"><span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> Deployment Options in This Design</div></h2><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-ed01ffd0-da9a-4604-80d9-078d31dc1d7f" class="p"><div  style="display: inline;">This design guidance is for the all architecture models of <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span>. By following the guidance, you can examine the design for these deployment options: </div></div><ul id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-92f06025-b0de-47c2-8262-4cf6b8b3c40a" class="ul"><div  style="display: inline;"><li id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_LI_75305D28-B031-48D9-B35E-C4763CA566FE" class="li"><div  style="display: inline;"><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-4ab49f0a-33c3-486f-e56a-ca8dc7bd2488" class="p"><div  style="display: inline;">Single <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> instance. </div></div></div></li><li id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_LI_0F1E7D0A-61B4-44A1-8311-C1CC9CF0820E" class="li"><div  style="display: inline;"><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-707b2c94-f87e-422a-9dd1-19a7250bb55b" class="p"><div  style="display: inline;">Single <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> instance with multiple availability zones (also known as stretched deployment). The default vSphere cluster of the workload domain is stretched between two availability zones by using <a class="xref" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vcf-vsan-design.html" title="" data-scope="local" data-format="dita" data-type="" target="_self">vSAN</a> and configuring <a class="xref" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vsphere-design-for-vmware-cloud-foundation/vcf-vsphere-cluster-design/vsphere-cluster-design-requirements-and-recommendations-for-vmware-cloud-foundation.html" title="" data-scope="local" data-format="dita" data-type="" target="_self">vSphere DRS rules</a> and <a class="xref" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/nsx-t-design-for-the-management-domain/nsx-t-services-design-for-the-management-domain/nsx-t-routing-for-the-management-domain-in-a-single-region-sddc.html" title="" data-scope="local" data-format="dita" data-type="" target="_self">BGP routing</a> accordingly.</div></div></div></li><li id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_LI_4E8B6B12-C627-4FF6-9239-0FBB2345E7E2" class="li"><div  style="display: inline;"><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-ce293d21-d4c5-4d04-de37-0a3df02ce9c7" class="p"><div  style="display: inline;">Multiple <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> instances. You deploy several instances of <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> to address requirements for scale and co-location of users and resources. </div></div><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_P_48F860A5-4F86-46C4-93D3-CED523D4AE08" class="p"><div  style="display: inline;">For disaster recovery, workload mobility, or propagation of common configuration to multiple <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> instances, you can deploy <a class="xref" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/nsx-t-design-for-the-management-domain.html" title="" data-scope="local" data-format="dita" data-type="" target="_self">NSX Federation</a> for the SDDC management and workload components.</div></div></div></li><li id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_LI_0E568367-0A96-4FCA-ACF6-8125D3A41D99" class="li"><div  style="display: inline;">Multiple <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> instances with multiple availability zones. You apply the configuration for stretched clusters for a single <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> instance to one or more additional <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> instances in your environment.</div></li></div></ul></div></section><section id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_SECTION_A8B180F9-DD8B-4023-AD98-21CBEA2EF37F" class="section"><div  style="display: inline;"><h2 id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_TITLE_C0492801-58B2-4AB2-9ADA-C45B36419C59" class="title"><div  style="display: inline;">vCenter Single Sign-On Options in This Design</div></h2><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_P_B2F8929A-D9F4-4EC8-A97A-D3EFB109301F" class="p"><div  style="display: inline;">This design guidance covers the topology with a single vCenter Single Sign-On domain in a <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> instance and the topology with several isolated vCenter Single Sign-On domains in a single instance. See <a class="xref" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vsphere-design-for-vmware-cloud-foundation/vcf-vcenter-server-design/vcf-vcenter-enhanced-linked-mode.html" title="" data-scope="local" data-format="dita" data-type="" target="_self">vCenter Single Sign-On Design Requirements for VMware Cloud Foundation</a>.</div></div></div></section><section id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_SECTION_32968D1A-DE9B-4693-B6D0-62D584FBAFAF" class="section"><div  style="display: inline;"><h2 id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_TITLE_B23CA761-2AE4-4942-B4A9-C0B7508FF0F8" class="title"><div  style="display: inline;"><span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span> Design Blueprints</div></h2><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_P_C90F4ACF-2C5A-4578-AFA7-D1273DC47A3B" class="p"><div  style="display: inline;">You can follow design blueprints for selected architecture models and topologies that list the applicable design elements. See <a class="xref" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vmware-cloud-foundation-concepts/vmware-cloud-foundation-design-patterns.html" title="" data-scope="local" data-format="dita" data-type="" target="_self">VMware Cloud Foundation Design Blueprints</a>.</div></div></div></section><section id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-587bef86-fc07-4c24-c340-2ddccd76eb78" class="section"><div  style="display: inline;"><h2 id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-40304db1-ee52-41e3-8b67-33703d014af4" class="title"><div  style="display: inline;"><cite id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_CITE_D9424425-2274-4D67-AC60-89C8DAB5CBC5" class="cite"><div  style="display: inline;"><span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span></div></cite> Glossary</div></h2><div id="GUID-9F072DF3-37B4-4C35-9BE4-99976D37E9F3-en_id-f19f739f-b501-414b-cec6-9178433bdff4" class="p"><div  style="display: inline;">See <a class="xref" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/getting-started-with-vcf-5-1/cloud-foundation-glossary.html" title="" data-scope="local" data-format="dita" data-type="" target="_self">VMware Cloud Foundation Glossary</a> for constructs, operations, and other terms specific to <span class="ph"><div  style="display: inline;">VMware Cloud Foundation</div></span>. It is important to understand these constructs before continuing with this design guidance.</div></div></div></section></div>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="linklist relatedlinks" data-label="Related information" ><div><div class="linkpool linklist">
+
+
+
+
+
+
+
+
+<div data-scope="" data-format="" data-type="" ><div class="linkpool linklist">
+
+
+
+
+
+
+
+
+<div data-scope="" data-format="" data-type="" ><a class="link" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vmware-cloud-foundation-concepts.html" title="To design a VMware Cloud Foundation         deployment, you need to understand certain VMware Cloud Foundation concepts." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">VMware Cloud Foundation Concepts</div></span></a><a class="link" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vcf-pods-and-racks.html" title="VMware Cloud Foundation distributes the functionality of the SDDC across multiple         workload domains and vSphere clusters. A workload domain, whether it is the management         workload domain or a VI workload domain, is a logical abstraction of compute, storage, and         network capacity, and consists of one or more clusters. Each cluster can exist vertically in         a single rack or be spanned horizontally across multiple racks." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Workload Domain Cluster to Rack Mapping in VMware Cloud Foundation</div></span></a><a class="link" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vcf-shared-storage-design.html" title="Storage design for VMware Cloud Foundation includes the design for principal and supplemental storage." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Supported Storage Types for VMware Cloud Foundation</div></span></a><a class="link" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vcf-vcenter-server-networking.html" title="IP addressing scheme, name resolution, and time synchronization     must support the requirements for VMware Cloud Foundation deployments." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">External Services Design for VMware Cloud Foundation</div></span></a><a class="link" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vcf-physical-network-infrastructure-design-for-nsx-t-data-center-for-the-management-domain.html" title="Design of the physical data center network includes defining the network topology for connecting physical switches and ESXi hosts, determining switch port settings for VLANs and link aggregation, and designing routing." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Physical Network Infrastructure Design for VMware Cloud Foundation</div></span></a><a class="link" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vcf-vsan-design.html" title="     VMware Cloud Foundation uses VMware vSAN as the principal storage type for the management domain and is recommended for use as principal storage in VI workload domains. You must determine the size of the compute and storage resources for the vSAN storage, and the configuration of the network carrying vSAN traffic. For multiple availability zones, you extend the resource size and determine the configuration of the vSAN witness host." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">vSAN Design for VMware Cloud Foundation</div></span></a><a class="link" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vsphere-design-for-vmware-cloud-foundation.html" title="The vSphere design includes determining the configuration of the     vCenter Server instances, ESXi hosts, vSphere clusters,and vSphere networking for a VMware Cloud Foundation environment." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">vSphere Design for VMware Cloud Foundation</div></span></a><a class="link" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/nsx-t-design-for-the-management-domain.html" title="In VMware Cloud Foundation, you use NSX                 for connecting management and customer virtual machines by using virtual network                 segments and routing. You also create constructs for solutions that are deployed for                 a single VMware Cloud Foundation                 instance or are available across multiple VMware Cloud Foundation instances. These constructs provide routing                 to the data center and load balancing." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">NSX Design for VMware Cloud Foundation</div></span></a><a class="link" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vcf-sddc-manager-design.html" title="In VMware Cloud Foundation, operational day-to-day efficiencies are delivered through SDDC Manager. These efficiencies include full life cycle management tasks such as deployment, configuration, patching and upgrades." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">SDDC Manager Design for VMware Cloud Foundation</div></span></a><a class="link" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vcf-vrealize-suite-lifecycle-manager-design.html" title="In VMware Cloud Foundation, VMware Aria Suite 						Lifecycle provides life cycle management capabilities for VMware Aria Suite components and Workspace 						ONE Access, including automated deployment, configuration, patching, and upgrade, and content management across VMware Aria Suite products." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">VMware Aria Suite Lifecycle Design for VMware Cloud Foundation</div></span></a><a class="link" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vcf-cross-region-workspace-one-access-design.html" title="     Workspace 						ONE Access in VMware Cloud Foundation mode provides identity and access management services to specific components in the SDDC, such as VMware Aria Suite." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Workspace ONE Access Design for VMware Cloud Foundation</div></span></a><a class="link" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vcf-configuration-and-lifecycle-management-of-esxi.html" title="In a VMware Cloud Foundation instance,         you use SDDC Manager for life cycle management of the management components in the entire         instance except for NSX Global Manager and VMware Aria Suite 						Lifecycle. VMware Aria Suite 						Lifecycle manages the life cycle of the components that it         deploys." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Life Cycle Management Design for VMware Cloud Foundation</div></span></a><a class="link" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vcf-logging-design-for-vrealize-suite-lifecycle-manager.html" title="By using VMware or third-party components, collect log data from all SDDC management components in your VMware Cloud Foundation environment in a central place. You can use VMware Aria Operations for Logs as the central platform because of its native integration with VMware Aria Suite Lifecycle." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Logging and Monitoring Design for VMware Cloud Foundation</div></span></a><a class="link" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vcf-information-security-and-access-design-for-esxi.html" title="You design management of access controls, certificates and accounts for VMware Cloud Foundation according to the requirements of your organization." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Information Security Design for VMware Cloud Foundation</div></span></a><a class="link" href="/us/en/vmware-cis/vcf/vcf-5-2-and-earlier/5-1/vcf-design-5-1/vcf-design-elements.html" title="The appendix aggregates all design requirements and recommendations in the design     guidance for VMware Cloud Foundation. You can     use this list for reference related to the end state of your platform and potentially to track     your level of adherence to the design and any justification for deviation." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Appendix: Design Elements for VMware Cloud Foundation</div></span></a></div>
+</div>
+</div>
+</div>
+</div></div>
+
+
+</div>
+</div>
+
+</div>
+
+                        <!-- Topic Footer -->
+                        
+
+
+
+
+
+
+
+
+
+
+                        
+                            <div class="contact-us-section">
+                                <p><hr style="border: 1px solid rgba(0,0,0,0.1)"/> <p> <a style="color: #005c8a;" href="/us/en/user-feedback.html">Content feedback and comments</a> </p></p>
+                            </div>
+                        
+                     </div>
+                  </div>
+               </section>
+
+            </main>
+         </div>
+      </div>
+   </div>
+   <!-- Include Template Footer
+      
+
+
+<footer id="footer">
+  <a href="#">About</a>
+  <a href="#">Contact Us</a>
+</footer>
+
+      -->
+   <!-- Include Client Libraries
+      <link rel="stylesheet" href="/etc.clientlibs/fmdita/clientlibs/siteoutput/default/common.min.css" type="text/css"/>
+
+
+      <link rel="stylesheet" href="/etc.clientlibs/fmdita/clientlibs/siteoutput/default/topicpage.min.css" type="text/css"/>
+<script src="/etc.clientlibs/clientlibs/granite/jquery.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/utils.min.js"></script>
+<script src="/etc.clientlibs/aem-site-template-dxml/broadcom/techdocs2/granite/utils.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/jquery/granite.min.js"></script>
+<script src="/etc.clientlibs/aem-site-template-dxml/broadcom/techdocs2/granite/jquery/granite.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/jquery.min.js"></script>
+<script src="/etc.clientlibs/fmdita/clientlibs/siteoutput/default/topicpage.min.js"></script>
+
+      <script src="/etc.clientlibs/fmdita/clientlibs/siteoutput/default/breadcrumbs.min.js"></script>
+
+      -->
+   <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+   <div class="footnode footer"><footer class="bc-angular-footer">
+	<div class="container">
+		<div class="row">
+			<section class="col-12 col-lg-8 footer-left px-0">
+				<div class="col-12 d-block d-sm-none">
+					<!-- // mobile social media icons here. -->
+					<ul class="list-inline social-icons">
+                     
+							
+							
+                            <li>
+
+							<a target="_blank" class="twitter" href="https://www.twitter.com/Broadcom" aria-label="twitter">
+								<i class="fab fa-twitter"></i>
+							</a>
+							</li>
+                            
+                            <li>
+
+							<a target="_blank" class="linkedin" href="https://www.linkedin.com/company/broadcom" aria-label="linkedin">
+								<i class="fab fa-linkedin"></i>
+							</a>
+							</li>
+                            
+                            <li>
+
+							<a target="_blank" class="youtube" href="https://www.youtube.com/c/broadcom" aria-label="youtube">
+								<i class="fab fa-youtube"></i>
+							</a>
+							</li>
+                            
+                            
+                            
+
+					</ul>
+				</div>
+				<div class="col-12 footer-list-wrap">
+					<div class="nav-list-wrap">
+						<ul class="list-inline footer-nav-list">
+                            
+							
+							
+                            <li>
+								<a href="https://www.broadcom.com/products/">Products</a>
+							</li>
+                            
+                            <li>
+								<a href="https://www.broadcom.com/solutions/">Solutions</a>
+							</li>
+                            
+                            <li>
+								<a href="https://www.broadcom.com/support/">Support and Services</a>
+							</li>
+                            
+                            <li>
+								<a href="https://www.broadcom.com/company/">Company</a>
+							</li>
+                            
+                            <li>
+								<a href="https://www.broadcom.com/how-to-buy/">How To Buy</a>
+							</li>
+                            
+                            
+                            
+						</ul>
+					</div>
+					<div class="col-12 copyright-text" tabindex="0">
+
+					
+							
+								Copyright © 2005-2025 Broadcom. All Rights Reserved. The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.
+                            
+
+                    </div>
+					<div class="footer-policies-wrap">
+						<ul class="list-inline policies-list">
+                        
+							
+							
+                            <li>
+								<a href="https://www.broadcom.com/company/legal/privacy-policy">Privacy</a>
+							</li>
+                            
+                            <li>
+								<a href="https://www.broadcom.com/company/citizenship/supplier-responsibility">Supplier Responsibility</a>
+							</li>
+                            
+                            <li>
+								<a href="https://www.broadcom.com/company/legal/terms-of-use/">Terms of Use</a>
+							</li>
+                            
+                            <li>
+								<a href="https://www.broadcom.com/sitemap">Sitemap</a>
+							</li>
+                            
+                            
+                            
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section class="col-12 col-lg-4 footer-right">
+				<div class="d-none d-sm-block">
+					<!-- // tablet and desktop social media icons here -->
+					<ul class="list-inline social-icons">
+                    	    
+							
+							
+                            <li>
+
+							<a target="_blank" class="twitter" href="https://www.twitter.com/Broadcom" aria-label="twitter">
+								<i class="fab fa-twitter"></i>
+							</a>
+							</li>
+                            
+                            <li>
+
+							<a target="_blank" class="linkedin" href="https://www.linkedin.com/company/broadcom" aria-label="linkedin">
+								<i class="fab fa-linkedin"></i>
+							</a>
+							</li>
+                            
+                            <li>
+
+							<a target="_blank" class="youtube" href="https://www.youtube.com/c/broadcom" aria-label="youtube">
+								<i class="fab fa-youtube"></i>
+							</a>
+							</li>
+                            
+                            
+                            
+
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+</footer></div>
+
+   <div class="swagger-field d-none">
+      <div class="swagger swagger-ui parbase">
+	
+
+
+</div>
+
+   </div>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'94429864aa85ac84',t:'MTc0Nzk4Mjc3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,1042 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  lang="en">
+
+
+
+
+ 
+
+
+<head>
+
+<meta name="description" content="vSphere Virtual Machine Administration describes how to create, configure, and manage virtual machines in the VMware vSphere environment.">
+
+
+
+
+    
+<!--
+<sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call=""/>
+  -->
+<!-- OneTrust Cookies Consent Notice start for broadcom-aem-dev-pub1.herodigital.com -->
+
+
+
+    <script defer="defer" type="text/javascript" src="https://rum.hlx.page/.rum/@adobe/helix-rum-js@%5E2/dist/rum-standalone.js" data-routing="env=prod,tier=publish,ams=Broadcom Corporation TechDocs2" integrity="" crossorigin="anonymous" data-enhancer-version="" data-enhancer-hash=""></script>
+<script src="" type="text/javascript" charset="UTF-8" nonce="brcmtd2409pThL2s9R8o9Q=="></script>
+
+    <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="6a5fee8c-80be-4b9a-ab7e-b607e3f8ad3e" nonce="brcmtd2409pThL2s9R8o9Q=="></script>
+
+    <script type="text/javascript" nonce="brcmtd2409pThL2s9R8o9Q==">
+        function OptanonWrapper() {
+            var targettingCookiesEnabled = false;
+            var functoinCookeisEnabled = false;
+            if (OnetrustActiveGroups) {
+                var split = OnetrustActiveGroups.split(',');
+                for (var i = 0; i < split.length; i++) {
+                    if (split[i] === 4 || split[i] === '4') {
+                        targettingCookiesEnabled = true;
+                    }
+                }
+            }
+
+            if (targettingCookiesEnabled) {
+                $('.onetrust-message-4').removeClass('hidden');
+                $('.onetrust-message-4').addClass('hidden');
+
+                $('object[data-onetrust]').each(function(index, elem) {
+                    var attrVal = $(this).attr('data-onetrust');
+                    $(this).attr('data', attrVal);
+                    $(this).removeAttr('data-onetrust');
+                })
+            } else {
+                $('.onetrust-message-4').removeClass('hidden');
+
+                $('object[data]').each(function(index, elem) {
+                    var attrVal = $(this).attr('data');
+                    $(this).attr('data-onetrust', attrVal);
+                    $(this).removeAttr('data');
+                })
+            }
+        }
+    </script>
+
+<!-- OneTrust Cookies Consent Notice end for broadcom-aem-dev-pub1.herodigital.com -->
+
+<base href="#"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="icon" type="image/x-icon" href="favicon.ico"/>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+
+
+<title>vSphere Virtual Machine Administration</title>
+
+<!-- <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html" data-sly-call=""/> -->
+
+
+
+
+    
+    
+<link rel="stylesheet" href="/etc.clientlibs/broadcom/techdocs2/clientlibs/clientlib-site.min.6205cc39f9208becda8d4ee8a3c0403a.css" type="text/css"/>
+<link rel="stylesheet" href="/etc.clientlibs/broadcom/techdocs2/clientlibs/clientlib-base.min.5655e74b95003532feb02ca2297dba89.css" type="text/css"/>
+
+
+
+
+
+
+
+
+<!-- <sly data-sly-use.pathChecker="broadcom.core.models.PathChecker">
+
+    <sly data-sly-test="">
+        <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+             data-sly-call="org.apache.sling.scripting.sightly.libs.granite.sightly.templates.clientlib__002e__html$2@7e896167"/>
+    </sly>
+
+    <sly data-sly-test="true">
+        <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+             data-sly-call="org.apache.sling.scripting.sightly.libs.granite.sightly.templates.clientlib__002e__html$2@7e896167"/>
+    </sly>
+
+</sly> -->
+
+<!--/* Include Context Hub */
+<sly data-sly-resource="contexthub"/>
+-->
+
+
+
+	<script type="application/ld+json" nonce="brcmtd2409pThL2s9R8o9Q==">
+        {"spacename":"VMware vSphere 8.0","keywords":"","@type":"Article","author":"CA Inc","alternateName":"","dateModified":"Wed May 21 2025 04:54:36 GMT+0000","language":"en","mainEntityOfPage":{"@type":"Webpage","URL":"/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0"},"@context":"http://schema.org","url":"/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0","datePublished":"2025-05-21T05:03:20.420Z","spacekey":"","currentpagetitle":"vSphere Virtual Machine Administration","appname":[],"appid":["vsphere-8-0"],"name":"vSphere Virtual Machine Administration","siteversion":"8-0","publisher":{"@type":"Organization","name":"CA INC","logo":{"@type":"ImageObject","url":"https://static.broadcom.com/static/css/img/logo-broadcom-bw.png"}},"productname":"VMware vSphere","searchurl":"/us/en/vmware-cis/vsphere/vsphere/8-0/search.html","supportid":["1600801","1600574"],"ux-context-string":[],"headline":"vSphere Virtual Machine Administration"}
+
+     </script>
+
+
+
+<script id="gtmScript" nonce="brcmtd2409pThL2s9R8o9Q==" data-nonce="brcmtd2409pThL2s9R8o9Q==" class="optanon-category-2">
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; var n = d.querySelector('[nonce]');
+        n && j.setAttribute('nonce', n.nonce || n.getAttribute('nonce')); f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KF7XWD');
+</script>
+
+
+
+
+
+
+
+ 
+	
+<!-- <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call=""/> -->
+
+
+    
+        
+    
+
+
+
+             <script src="/etc.clientlibs/aem-site-template-dxml/broadcom/techdocs2/granite/jquery.min.3e24d4d067ac58228b5004abb50344ef.js"></script>
+             <script src="/etc.clientlibs/aem-site-template-dxml/broadcom/techdocs2/granite/utils.min.3b86602c4e1e0b41d9673f674a75cd4b.js"></script>
+     <script src="/etc.clientlibs/aem-site-template-dxml/broadcom/techdocs2/granite/jquery/granite.min.011c0fc0d0cf131bdff879743a353002.js"></script>
+             <script src="/etc.clientlibs/broadcom/techdocs2/clientlibs/clientlib-site.min.c805a7c603907f76c83cad12136a7892.js"></script>
+             <script src="/etc.clientlibs/broadcom/techdocs2/clientlibs/clientlib-base.min.9c6ecf37abe41edeafa6651ab84195d8.js"></script>
+    
+    
+        
+
+
+    <script src="https://searchunify.broadcom.com/resources/Allow/an.js?uid=e95e476a-e759-11ea-beba-0242ac12000b" type="text/plain" class="optanon-category-2" charset="UTF-8" nonce="brcmtd2409pThL2s9R8o9Q=="></script>
+ 
+</head>
+
+
+
+
+
+
+
+
+          
+
+
+
+
+<body class="">
+
+   <div class="gtm-noscript">
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KF7XWD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+</div>
+
+   <input type="hidden" data-path="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0" id="connectorsPath"/>
+   <input type="hidden" data-path="2025-05-21T04:54:36.272Z" id="lastmodified"/>
+   <!-- Modified Code -->
+   <div class="header">    <header class="bc-ang-header" role="banner">
+	<div class="container-fluid">
+		<div class="position-relative">
+			<nav class="navbar navbar-expand-lg navbar-light dropdown" role="navigation">
+				<div class="navbar-brand-wrapper">
+					<button class="fa fa-bars toggle-menu d-block d-lg-none" id="mobileMenuToggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03, #header-search-control" aria-controls="navbarTogglerDemo03 header-search-control" aria-expanded="false" aria-label="Toggle navigation">
+						<span>MENU</span>
+					</button>
+					<a class="navbar-brand" href="https://www.broadcom.com" aria-label="Broadcom"></a>
+				</div>
+				
+					
+						<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+
+							<ul class="navbar-nav">
+
+								
+									<li class="nav-item">
+										<a class="nav-link" href="https://www.broadcom.com/products/">Products</a>
+									</li>
+								
+									<li class="nav-item">
+										<a class="nav-link" href="https://www.broadcom.com/solutions/">Solutions</a>
+									</li>
+								
+									<li class="nav-item">
+										<a class="nav-link" href="https://www.broadcom.com/support/">Support and Services</a>
+									</li>
+								
+									<li class="nav-item">
+										<a class="nav-link" href="https://www.broadcom.com/company/">Company</a>
+									</li>
+								
+									<li class="nav-item">
+										<a class="nav-link" href="https://www.broadcom.com/how-to-buy/">How To Buy</a>
+									</li>
+								
+								<li class="nav-item d-lg-none mt-3 mob-login loggedOutUser">
+									
+										<div class="dropdown">
+											<button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Login
+											</button>
+											<div class="dropdown-menu">
+												<div class="dropdown-wrapper">
+													<div class="my-account">myBroadcom Account:</div>
+													<div class="login-btn-wrapper">
+														<a class="btn btn-login" href="https://access.broadcom.com/default/saml/v1/idp/login?appId=bee0d0aa-6aa9-4dbf-a48d-dd47cf0dd8a0">Login</a>
+														<a class="btn btn-register" href="https://profile.broadcom.com/web/registration">Register</a>
+													</div>
+													<div>
+														<a class="forgot-pswd" href="https://profile.broadcom.com/web/forgot-password">Forgot
+															Username/Password?</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									
+								</li>
+								<li class="nav-item d-lg-none mt-3 mob-login loggedInUser">
+									<div class="dropdown">
+										<button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Username
+										</button>
+										<div class="dropdown-menu">
+											<a class="dropdown-item" href="https://portal.broadcom.com/group/user/editprofile">Edit My
+												Profile</a>
+											<a class="dropdown-item" href="https://support.broadcom.com/user/user_redirect?dest=user">myBroadcom</a>
+											
+												<a href="/system/sling/logout.html" class="btn btn-default">Logout</a>
+											
+										</div>
+									</div>
+								</li>
+								<li class="nav-item d-block d-lg-none mob-langselector">
+									<div class="dropdown">
+										<button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Language
+										</button>
+										<div class="dropdown-menu">
+											<ul class="language-selector-list">
+												<li>
+													<a href="https://www.broadcom.com">
+														English
+													</a>
+												</li>
+												<li>
+													<a href="https://jp.broadcom.com">
+														日本語
+													</a>
+												</li>
+												<li>
+													<a href="https://www.broadcom.cn">
+														中文
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</li>
+							</ul>
+				</div>
+				<div class="menu-bg"></div>
+				<nav class="secondary-nav d-none d-lg-block">
+					<ul class="nav nav-stacked">
+						<!-- Login -->
+						<li class="dropdown login loggedOutUser">
+							
+								<button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Login
+								</button>
+								<div class="dropdown-menu">
+									<div class="dropdown-wrapper">
+										<div class="my-account">myBroadcom Account:</div>
+										<div class="login-btn-wrapper">
+											<a class="btn btn-login" href="https://access.broadcom.com/default/saml/v1/idp/login?appId=bee0d0aa-6aa9-4dbf-a48d-dd47cf0dd8a0">Login</a>
+											<a class="btn btn-register" href="https://profile.broadcom.com/web/registration">Register</a>
+										</div>
+										<div>
+											<a class="forgot-pswd" href="https://profile.broadcom.com/web/forgot-password">Forgot
+												Username/Password?</a>
+										</div>
+									</div>
+								</div>
+							
+						</li>
+						<li class="dropdown loggedInUser">
+							<button type="button" tabindex="0" class="dropdown-toggle showUserName" data-bs-toggle="dropdown" aria-expanded="false">Username
+							</button>
+							<div class="dropdown-menu language">
+								<a class="dropdown-item" href="https://portal.broadcom.com/group/user/editprofile">Edit My
+									Profile</a>
+								<a class="dropdown-item" href="https://support.broadcom.com/user/user_redirect?dest=user">myBroadcom</a>
+								
+									<a class="dropdown-item mb-3" tabindex="0" href="/system/sling/logout.html">
+										Logout
+									</a>
+								
+							</div>
+						</li>
+						<!-- End of Login -->
+						<li class="dropdown">
+							<button type="button" tabindex="0" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">English</button>
+							<div class="dropdown-menu language">
+								<a class="dropdown-item mb-3" tabindex="0" href="https://jp.broadcom.com" lang="ja">
+									<span class="d-block d-lg-none fa fa-check-circle"></span>
+									日本語
+								</a>
+								<a class="dropdown-item" tabindex="0" href="https://www.broadcom.cn" lang="zh">
+									<span class="d-block d-lg-none fa fa-check-circle"></span>
+									中文
+								</a>
+							</div>
+						</li>
+					</ul>
+						
+				</nav>
+				
+						
+				
+					
+						
+							<input type="hidden" id="ajaxSearchLink" value="https://api.swiftype.com/api/v1/public/engines/suggest.json?callback=jQuery111108956332510755289_1550482155945&amp;q={query}&amp;engine_key=-YxE_JXFEvU4sfy-biZV&amp;filters%5Bpages%5D%5BAssetType%5D=AVG_Product_C&amp;filters%5Bpages%5D%5Blocale%5D=avg_en&amp;_=1550482155946"/>
+						
+					
+				
+				
+					
+						
+							<form class="form-inline d-lg-block predictive-search-form collapse" id="header-search-control" role="search" method="GET" action="https://www.broadcom.com/site-search">
+								<div class="autocomplete">
+									<input class="form-control predictive-search" type="search" placeholder="SEARCH" aria-label="Search" id="bcAppSearch" name="q" autocomplete="off"/>
+									<button role="button" aria-label="Search" class="fa fa-search my-sm-0" type="submit"></button>
+								</div>
+							</form>
+							<form class="form-inline my-2 pt-lg-3 predictive-search-form d-none" id="bcAppMobSearchForm" role="search" method="GET" action="https://www.broadcom.com/site-search">
+								<div class="autocomplete">
+									<div class="dropdown">
+										<button role="button" aria-label="Search" class="fa fa-search my-2 my-sm-0 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+										<div class="dropdown-menu">
+											<input class="form-control predictive-search" type="search" placeholder="Search" aria-label="Search" id="bcAppMobSearch" name="q" autocomplete="off"/>
+										</div>
+									</div>
+								</div>
+							</form>
+						
+					
+				
+			</nav>
+		</div>
+	</div>
+</header></div>
+
+   
+   <div class="container">
+      <div class="product-search-topic-header">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-12">
+                  <div class="breadcrumb_navigation_links breadcrumb-navigation-links">
+    <div class="d-flex">
+        
+        <nav aria-label="Breadcrumb" class="bc-nav">
+            <ul class="d-flex flex-wrap">
+                <li><a class="d-flex align-items-center" href="/"><span class="bc-home-icon"></span><span class="sr-only">Home</span></a></li>
+                
+                    <li>
+                        <a href="/us/en/vmware-cis.html">VMware® Cloud Infrastructure Software</a>
+                    </li>
+                
+                    <li>
+                        <a href="/us/en/vmware-cis/vsphere.html">VMware vSphere</a>
+                    </li>
+                
+                    <li>
+                        <a href="/us/en/vmware-cis/vsphere/vsphere/8-0.html">VMware vSphere 8.0</a>
+                    </li>
+                
+                    <li>
+                        <a href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0.html">vSphere Virtual Machine Administration</a>
+                    </li>
+                
+            </ul>
+        </nav>
+            
+    </div>
+
+</div>
+
+               </div>
+               <div class="topic-header"><div class="topic-header-inner">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 topic-header-inner__wrapper px-0">
+                <div class="topic-header-inner__title">
+                    
+
+
+
+<div class="title-banner">
+
+    <h1 tabindex="0">
+        
+    <a class="col-lg-12 px-0" href="/us/en/vmware-cis/vsphere/vsphere/8-0.html">VMware vSphere 8.0</a>
+    
+	
+    </h1>
+</div>
+
+
+
+                </div>
+                <div class="topic-header-inner__utility">
+                    
+
+    <div class="col-12 no-pad-right">
+        <a class="download__pdf" href="/content/dam/broadcom/techdocs/us/en/pdf/vmware/vsphere/vsphere/vmware-vsphere-8-0.pdf" target="_blank">
+            <span class="sr-only">PDF</span>
+        </a>
+    </div>
+
+
+                    <div class="col-12 no-pad-right">
+<div class="dropdown bc-version-dropdown">
+
+
+  <button class="btn btn-lg dropdown-toggle bc-version-dropdown-btn" data-versionid="8.0" type="button" id="version-dropdown-btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="dropdown-text">Version</span>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="version-dropdown-btn">
+
+	
+	
+     <a class="dropdown-item" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0.html">8.0</a>
+	
+  	
+	
+     <a class="dropdown-item" href="/us/en/vmware-cis/vsphere/vsphere/7-0.html">7.0</a>
+	
+  	
+	
+     <a class="dropdown-item" href="/us/en/vmware-cis/vsphere/vsphere/6-7.html">6.7</a>
+	
+  	
+	
+     <a class="dropdown-item" href="/us/en/vmware-cis/vsphere/vsphere/6-5.html">6.5</a>
+	
+  	
+
+  </div>
+  
+  
+</div>
+</div>
+
+                    
+    
+
+        <div class="col-12 no-pad-right">
+            <div class="dropdown bc-language-dropdown">
+
+                <button class="btn btn-lg dropdown-toggle bc-language-dropdown-btn" data-languageid="English" type="button" id="language-dropdown-btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="dropdown-text">Language</span>
+                </button>
+
+                <div class="dropdown-menu" aria-labelledby="language-dropdown-btn">
+                    
+                    
+                        <a class="dropdown-item" href="/cn/zh-cn/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0.html">简体中文</a>
+                    
+                    
+                    
+                        <a class="dropdown-item" href="/de/de/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0.html">Deutsch</a>
+                    
+                    
+                    
+                        <a class="dropdown-item" href="/es/es/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0.html">Español</a>
+                    
+                    
+                    
+                        <a class="dropdown-item" href="/fr/fr/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0.html">Français</a>
+                    
+                    
+                    
+                        <a class="dropdown-item" href="/it/it/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0.html">Italiano</a>
+                    
+                    
+                    
+                        <a class="dropdown-item" href="/jp/ja/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0.html">日本語</a>
+                    
+                    
+                    
+                        <a class="dropdown-item" href="/kr/ko/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0.html">한국어</a>
+                    
+                    
+                    
+                        <a class="dropdown-item" href="/tw/zh-tw/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0.html">繁體中文</a>
+                    
+                    
+                    
+                        <a class="dropdown-item" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0.html">English</a>
+                    
+                    
+                </div>
+
+            </div>
+        </div>
+    
+
+
+                    <div class="product-landing-search-wrapper">
+    
+
+         
+         <script type="text/javascript">
+             var isTD2 = true;  // Ensure you access the correct property
+        </script>
+
+    
+
+
+        <form action="/us/en/vmware-cis/vsphere/vsphere/8-0/search.html" method="GET" class="product-landing-search-form" role="search" data-call-analytics="true">
+            <button type="submit" aria-label="Search" class="fa fa-search product-landing-search-icon"></button>
+            <input type="text" id="product-landing-search" name="q" placeholder="Search this product" aria-label="Search this product. When autocomplete results are available use up and down arrows to review and enter to select." autocomplete="off" data-searchlink="/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/8-0/search.html" data-siteTitle="VMware vSphere 8.0"  data-pageName="vSphere Virtual Machine Administration"/>
+        </form>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="topic-full-width">
+    </div>
+</div></div>
+
+            </div>
+         </div>
+      </div>
+      <div class='row'>
+         <div class="col-12 col-lg-3 product-landing-left-nav is-active">
+            <div class="leftnav-toggle">
+               <button class="toggle-sidebar is-active">
+               <span class="sr-only">Open/Close Topics Navigation</span>
+               </button>
+            </div>
+            <div class="dropdown left-content-mobile">
+               <button type="button" class="btn dropdown-toggle show-left-content-mobile d-block d-lg-none" data-bs-toggle="dropdown">
+               Product Menu
+               <span class="fa fa-chevron-down float-right"></span>
+               </button>
+               <div class="dropdown-menu">
+                  <div class="toc tableofcontentsmod tableofcontents">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+
+
+
+
+    <!-- <link rel="stylesheet" href="/etc.clientlibs/fmdita/clientlibs/rhjs.min.css" type="text/css"/>
+<link rel="stylesheet" href="/etc.clientlibs/fmdita/clientlibs/siteoutput/default/tableofcontents.min.css" type="text/css"/>
+<script src="/etc.clientlibs/fmdita/clientlibs/rhjs.min.js"></script>
+<script src="/etc.clientlibs/fmdita/clientlibs/siteoutput/default/tableofcontents.min.js"></script>
+ -->
+    
+    <div class="tocContainer" data-rhwidget="Basic" role="navigation">
+      <h3 class="tocContainer__title">Topics</h3>
+      <div class="loader"></div>
+        <ul id="accordion" class="tocList" aria-label="Table of Contents Accordion"></ul>
+        <script type="text/javascript" nonce="brcmtd2409pThL2s9R8o9Q==">
+             var tocServletPath = '/bin/broadcom/techdocs2/TOCServlet';
+            $('tocList').hide();
+            $.getJSON(tocServletPath,{basePath:'/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/8-0'},function(data, textStatus, jqXHR) {
+
+                createTOCLoop(data, "accordion");
+
+                $('.tocList').html(tocElement);
+                $('.loader').hide();
+                $('.tocList').show();
+
+                $('.tocList .collapse').on('shown.bs.collapse', function (e) {
+
+                    if ($(this).is(e.target)){
+                        $(this).attr("aria-current", true);
+                        $(this).parent('li').addClass('active-acc');
+                        $('ul.show').last().find('li.active-acc').addClass('has-border');
+                        $(this).parent('li').children('a').last().removeClass('fa-plus').addClass('fa-minus');
+                    }
+                });
+
+                $('.tocList .collapse').on('hidden.bs.collapse', function (e) {
+
+                    if($(this).is(e.target)){
+                        $(this).removeAttr("aria-current");
+                        $(this).parent('li').removeClass('active-acc');
+                        $(this).parent('li').children('a').last().removeClass('fa-minus').addClass('fa-plus');
+                    }
+                });
+
+                collapseAndSelectCurrentPageAtTOC();
+                leftNavScrollTimer = setInterval(leftNavScroll, 300);
+            });
+
+            var tocElement = '';
+            function createTOCLoop (thisArray, referParentID) {
+
+                $.each(thisArray, function(index, value) {
+                  
+                    var htmlItemTitle = value.title.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                    var htmlItemLink = value.link;
+
+                    if(value.children.length <= 0) {
+                        if(referParentID == "accordion") {
+                            tocElement += '<li class="parent"><a class="toc-title col-12" href="'+ htmlItemLink +'"><span>' + htmlItemTitle + '</span></a>';
+                        } else {
+                            tocElement += '<li><a class="toc-title col-12" href="'+htmlItemLink+'"><span>' + htmlItemTitle + '</span></a>';
+                        }
+                    }
+                    else if(value.children.length > 0) {
+                        if(referParentID == "accordion") {
+                            tocElement += '<li class="parent"><a class="toc-title col-9 col-lg-8" href="'+htmlItemLink+'">' + htmlItemTitle + '</a><a tabindex="0" aria-label="' + htmlItemTitle + '" role="button" class="col-1 fa fa-plus toc-arrow" aria-label="Click to Expand" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#toc'+frameid(htmlItemLink+''+htmlItemTitle)+'" href="#toc'+frameid(htmlItemLink+''+htmlItemTitle)+'"></a><ul data-parent="#'+ referParentID +'" class="collapse" id="toc'+frameid(htmlItemLink+''+htmlItemTitle)+'">';
+                        } else {
+                            tocElement += '<li><a class="toc-title col-9 col-lg-8" href="'+htmlItemLink+'">' + htmlItemTitle + '</a><a tabindex="0" aria-label="' + htmlItemTitle + '" role="button" class="col-1 fa fa-plus toc-arrow" aria-label="Click to Expand" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#toc'+frameid(htmlItemLink+''+htmlItemTitle)+'" href="#toc'+frameid(htmlItemLink+''+htmlItemTitle)+'"></a><ul data-parent="#'+ referParentID +'" class="collapse" id="toc'+frameid(htmlItemLink+''+htmlItemTitle)+'">';
+                        }
+                        createTOCLoop(value.children, ""+("toc"+frameid(htmlItemLink+''+htmlItemTitle)));
+                        tocElement += '</ul>';
+                    }
+                    tocElement += '</li>';
+                });
+            }
+
+            function frameid (id) {
+                var strid = id.replace(/[^\w\s]/gi, '').split("_").join("").split(" ").join("");
+                return strid;
+            }
+
+            var leftNavScrollTimer;
+
+            function leftNavScroll() {
+                if($('ul.show').last().find('li.active-acc.has-border').length > 0){
+                    document.getElementsByClassName("toc tableofcontentsmod tableofcontents")[0].scrollTop = $('ul.show').last().find('li.active-acc.has-border')[0].offsetTop -100;
+                    clearLeftNavScrollTimer();
+                }else{
+                    if($('ul.tocList').last().find('li.active-acc.has-border').length > 0){
+                        document.getElementsByClassName("toc tableofcontentsmod tableofcontents")[0].scrollTop = $('ul.tocList').last().find('li.active-acc.has-border')[0].offsetTop -100;
+                        clearLeftNavScrollTimer();
+                    }else if($('ul.tocList').last().find('li.active-acc').length > 0){
+                        document.getElementsByClassName("toc tableofcontentsmod tableofcontents")[0].scrollTop = $('ul.tocList').last().find('li.active-acc')[0].offsetTop -100;
+                        clearLeftNavScrollTimer();
+                    }
+                }
+            }
+
+            function clearLeftNavScrollTimer() {
+              clearInterval(leftNavScrollTimer);
+            }
+
+            function collapseAndSelectCurrentPageAtTOC(){
+                var currentPagePath = window.location.pathname + window.location.hash;
+                var currentPagePathSplit = currentPagePath.split(['#']);
+                currentPagePath = currentPagePathSplit[0];
+
+                if(currentPagePath.startsWith("/content/broadcom/techdocs")){
+                    currentPagePath = currentPagePath.split("/content/broadcom/techdocs")[1];
+                }
+
+                $(".toc-title").each(function(index, tocElement) {
+                    var thisHref = $(this).attr("href");
+                    var thisHrefSplit = thisHref.split(['#']);
+                    thisHref = thisHrefSplit[0];
+
+
+
+                    $(this).removeClass('active-acc');
+
+                    if(thisHref === currentPagePath) {
+                        $(this).attr("aria-current", true);
+                        $(this).closest(".parent").addClass("active-acc");
+                        $(this).parents(".collapse").collapse('show');
+                        //$(this).parents(".collapse").parents("li").addClass("active-acc");
+                        $(this).parents("li").addClass("active-acc");
+                        $(".active-acc").children(".collapse").each(function(index, child){
+                            $(this).collapse('show');
+                        });
+
+                        $('li.active-acc').each(function () {
+                            if ($(this).children('ul').length > 0) {
+                                $(this).removeClass('has-border');
+                                $(this).addClass('remove-border');
+                            }
+                        })
+
+                    }
+
+                });
+
+            }
+      	</script>
+    </div>
+
+</div>
+
+               </div>
+            </div>
+         </div>
+         <div class="col-12 col-lg-8 offset-lg-1 product-detail px-lg-0">
+            <!-- Include Template Header -->
+            <main class="clearfix">
+               <section id="section">
+                  <!-- Topic Header
+                     
+
+
+
+
+
+          
+
+
+
+
+<div class="topicheader">
+  <div class="breadcrumb"></div>
+  <div class="mobile-open-toc-button"></div>
+  
+</div>
+                     -->
+                  <div class="par parsys">
+                     <div class="topic section">
+                        <!-- Topic Content -->
+                        <div class="contentnode parsys"><div class="topic section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="topic topic concept" id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en" >
+
+    <h1 class="title"><div  style="display: inline;">vSphere Virtual Machine Administration</div></h1>
+
+    <div id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_SHORTDESC_BFCACAF68D7943E986E07AE79F679235" class="shortdesc"><div  style="display: inline;"><cite id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_CITE_1EB81E2B0AA44E01B78720D6113EA482" class="cite"><div  style="display: inline;">vSphere Virtual Machine Administration</div></cite> describes how to create, configure, and manage virtual machines in the VMware vSphere<span  class="tm" >®</span> environment. </div></div>
+
+    <div  style="display: inline;"><div id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_P_C3D1BB83-87F1-43DE-B679-DAEDCC2FC978" class="p"><div  style="display: inline;">At VMware, we value inclusion. To foster this principle within our customer, partner, and internal community, we have updated this guide to remove instances of non-inclusive language.</div></div><div id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_P_B0D10A52352E4287B7F1610F575A2CAC" class="p"><div  style="display: inline;">This guide provides introductions to the tasks that you can perform within the system and also cross-references to the documentation that describes the tasks in detail. </div></div><div id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_P_F469A5B05AE144108F4FCC587ACDF1E0" class="p"><div  style="display: inline;">This information focuses on managing virtual machines and includes the following information. </div></div><ul id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_UL_095F7F59BEFE4CB2A73FDFDCE7501A6B" class="ul"><div  style="display: inline;"><li id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_LI_1AE97A1DA1A345FF9F02BF813B0DBA86" class="li"><div  style="display: inline;">Creating and deploying virtual machines, templates, and clones </div></li><li id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_LI_8EF322DA3F8F4B9F859FEE08E49E9F76" class="li"><div  style="display: inline;">Deploying OVF templates </div></li><li id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_li_62A0E4EC54394ED6BB1D98F6208A35C0" class="li"><div  style="display: inline;">Using content libraries to manage templates and other library items </div></li><li id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_LI_A7EC821F16294CF39F24C3BC2DED1ACC" class="li"><div  style="display: inline;">Configuring virtual machine hardware and virtual machine options </div></li><li id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_LI_8D9F71F42F3847199374C59EFF3A1BAE" class="li"><div  style="display: inline;">Managing multi-tiered applications with VMware vSphere vApp </div></li><li id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_LI_880CAD251BF24D70A4B03CB7C7533372" class="li"><div  style="display: inline;">Monitoring solutions with the vCenter Solutions Manager </div></li><li id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_LI_AC0FF40A93CB48F3A1B89B3901E89F4F" class="li"><div  style="display: inline;">Managing virtual machines, including using snapshots </div></li><li id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_LI_7AA4779B59D44A5F82D366B3043C2029" class="li"><div  style="display: inline;">Upgrading virtual machines </div></li><li id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_li_A3F934B67C4342B5B7D61A44E8D1575C" class="li"><div  style="display: inline;">Troubleshooting virtual machines </div></li></div></ul><div id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_P_6D1629AD357842EDB447EDF09F408AE9" class="p"><div  style="display: inline;"><cite id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_CITE_6C41E7FB24E74FB0A64025FAE6700780" class="cite"><div  style="display: inline;">vSphere Virtual Machine Administration</div></cite> covers VMware <span class="ph"><div  style="display: inline;">ESXi</div></span><span  class="tm" >™</span> and VMware <span class="ph"><div  style="display: inline;">vCenter Server</div></span><span  class="tm" >®</span>. </div></div><section id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_INTENDED_AUDIENCE" class="section"><div  style="display: inline;"><h2 id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_GUID-AEEB393E-9794-455A-A107-C5578663EA7C" class="title"><div  style="display: inline;">Intended Audience</div></h2><div id="GUID-35418C24-A2A9-4CEA-B490-EA922CDE2768-en_P_30EFECF6A60241A2B2EFBAA53F0A781C" class="p"><div  style="display: inline;">This information is written for experienced Windows or Linux system administrators who are familiar with virtualization. </div></div></div></section></div>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="linklist relatedlinks" data-label="Related information" ><div><div class="linkpool linklist">
+
+
+
+
+
+
+
+
+<div data-scope="" data-format="" data-type="" ><div class="linkpool linklist">
+
+
+
+
+
+
+
+
+<div data-scope="" data-format="" data-type="" ><a class="link" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/updated-information-8-0-update-3vsphere-vm-admin.html" title="This vSphere Virtual Machine             Administration is updated with each release of the product or when         necessary." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Updated Information</div></span></a><a class="link" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/introduction-to-vmware-vsphere-virtual-machinesvsphere-vm-admin.html" title="A virtual machine 	 is a software computer that, like a physical computer, runs an operating system 	 and applications. The virtual machine consists of a set of specification and 	 configuration files and is backed by the physical resources of a host. Every 	 virtual machine has virtual devices that provide the same functionality as 	 physical hardware but are more portable, more secure, and easier to manage.    " data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Introduction to VMware vSphere Virtual Machines</div></span></a><a class="link" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/deploying-virtual-machinesvsphere-vm-admin.html" title=" VMware supports several methods to 		provision  vSphere virtual machines. What works best in your environment depends on factors 		such as the size and type of your infrastructure and the goals that you want to achieve. " data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Deploying Virtual Machines</div></span></a><a class="link" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/deploying-ovf-templatesvsphere-vm-admin.html" title="You can export virtual machines, 		virtual appliances, and vApps in Open Virtual Format (OVF) and Open Virtual Appliance (OVA). 		You can then deploy the OVF or OVA template in the same environment or in a different 		environment." data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Deploy and Export OVF and OVA Templates</div></span></a><a class="link" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/using-content-librariesvsphere-vm-admin.html" title="Content libraries are container objects for VM and vApp templates and other types of files, such as ISO images, text files, and so on. " data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Using Content Libraries</div></span></a><a class="link" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/configuring-virtual-machine-hardwarevsphere-vm-admin.html" title="You can add or configure most virtual 		machine hardware settings during virtual machine creation or after you create the virtual 		machine and install the guest operating system. " data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Configuring Virtual Machine Hardware</div></span></a><a class="link" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/configuring-virtual-machine-optionsvsphere-vm-admin.html" title="You can set or change virtual machine     options to run VMware Tools scripts, control user access to the remote console, configure     startup behavior, and more. " data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Configuring Virtual Machine Options</div></span></a><a class="link" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/edit-virtual-machine-configuration-file-parametersvsphere-vm-admin.html" title="You can change or 	 add virtual machine configuration parameters when instructed by a VMware 	 technical support representative, or if you see VMware documentation that 	 instructs you to add or change a parameter to fix a problem with your system.   " data-scope="local" data-format="dita" data-type="task" target="_self"><span class="linktext"><div  style="display: inline;">Configure Virtual Machine Advanced File Parameters</div></span></a><a class="link" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/managing-multi-tiered-applications-with-vsphere-vapp-in-the-vsphere-web-clientvsphere-vm-admin.html" title="With vSphere vApp, 	 you can package multiple interoperating virtual machines and software 	 applications into a single unit that you can manage and distribute in OVF 	 format.    " data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Managing Multi-Tiered Applications with vSphere vApp</div></span></a><a class="link" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/solution-managervsphere-vm-admin.html#GUID-86CE972E-B21A-4B3D-B6A0-BEB208C6C0CC-en" title="A solution is an extension of the 			vCenter Server that adds new functions to the vCenter Server instance. 		You can monitor the detailed information of an inventory and the health status of the 		solutions. " data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Monitoring Solutions with the vCenter Solutions Manager</div></span></a><a class="link" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/managing-virtual-machinesvsphere-vm-admin.html" title="You can manage 	 individual virtual machines or a group of virtual machines that belongs to a 	 host or cluster.    " data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Managing Virtual Machines</div></span></a><a class="link" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/upgrading-virtual-machinesvsphere-vm-admin.html#GUID-EE77B0A9-F8FF-4785-BEAD-B6F04EE04492-en" title=" You can upgrade 	 virtual machines to a higher level of compatibility and a higher version of 	 VMware tools. After the upgrade, your VMs can take advantage of new hardware 	 options and new features.    " data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">How do I Upgrade Virtual Machines</div></span></a><a class="link" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/required-privileges-for-common-tasksvsphere-vm-admin.html" title="Many tasks require permissions on multiple objects in the vSphere inventory. If the user who attempts to perform the task only has privileges on one object, the task cannot complete successfully. " data-scope="local" data-format="dita" data-type="reference" target="_self"><span class="linktext"><div  style="display: inline;">Required vCenter Server Privileges for Common Tasks</div></span></a><a class="link" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/troubleshooting-overviewvsphere-vm-admin.html" title="     vSphere Troubleshooting 	 contains common troubleshooting scenarios and provides solutions for each of 	 these problems. You can also find guidance here for resolving problems that 	 have similar origins. For unique problems, consider developing and adopting a 	 troubleshooting methodology.    " data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Troubleshooting Overview</div></span></a><a class="link" href="/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/troubleshooting-virtual-machinesvsphere-vm-admin.html" title=" The virtual machine troubleshooting topics provide solutions to potential problems that you might encounter when using your virtual machines. " data-scope="local" data-format="dita" data-type="concept" target="_self"><span class="linktext"><div  style="display: inline;">Troubleshooting Virtual Machines</div></span></a></div>
+</div>
+</div>
+</div>
+</div></div>
+
+
+</div>
+</div>
+
+</div>
+
+                        <!-- Topic Footer -->
+                        
+
+
+
+
+
+
+
+
+
+
+                        
+                            <div class="contact-us-section">
+                                <p><hr style="border: 1px solid rgba(0,0,0,0.1)"/> <p> <a style="color: #005c8a;" href="/us/en/user-feedback.html">Content feedback and comments</a> </p></p>
+                            </div>
+                        
+                     </div>
+                  </div>
+               </section>
+
+            </main>
+         </div>
+      </div>
+   </div>
+   <!-- Include Template Footer
+      
+
+
+<footer id="footer">
+  <a href="#">About</a>
+  <a href="#">Contact Us</a>
+</footer>
+
+      -->
+   <!-- Include Client Libraries
+      <link rel="stylesheet" href="/etc.clientlibs/fmdita/clientlibs/siteoutput/default/common.min.css" type="text/css"/>
+
+
+      <link rel="stylesheet" href="/etc.clientlibs/fmdita/clientlibs/siteoutput/default/topicpage.min.css" type="text/css"/>
+<script src="/etc.clientlibs/clientlibs/granite/jquery.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/utils.min.js"></script>
+<script src="/etc.clientlibs/aem-site-template-dxml/broadcom/techdocs2/granite/utils.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/jquery/granite.min.js"></script>
+<script src="/etc.clientlibs/aem-site-template-dxml/broadcom/techdocs2/granite/jquery/granite.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/jquery.min.js"></script>
+<script src="/etc.clientlibs/fmdita/clientlibs/siteoutput/default/topicpage.min.js"></script>
+
+      <script src="/etc.clientlibs/fmdita/clientlibs/siteoutput/default/breadcrumbs.min.js"></script>
+
+      -->
+   <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+   <div class="footnode footer"><footer class="bc-angular-footer">
+	<div class="container">
+		<div class="row">
+			<section class="col-12 col-lg-8 footer-left px-0">
+				<div class="col-12 d-block d-sm-none">
+					<!-- // mobile social media icons here. -->
+					<ul class="list-inline social-icons">
+                     
+							
+							
+                            <li>
+
+							<a target="_blank" class="twitter" href="https://www.twitter.com/Broadcom" aria-label="twitter">
+								<i class="fab fa-twitter"></i>
+							</a>
+							</li>
+                            
+                            <li>
+
+							<a target="_blank" class="linkedin" href="https://www.linkedin.com/company/broadcom" aria-label="linkedin">
+								<i class="fab fa-linkedin"></i>
+							</a>
+							</li>
+                            
+                            <li>
+
+							<a target="_blank" class="youtube" href="https://www.youtube.com/c/broadcom" aria-label="youtube">
+								<i class="fab fa-youtube"></i>
+							</a>
+							</li>
+                            
+                            
+                            
+
+					</ul>
+				</div>
+				<div class="col-12 footer-list-wrap">
+					<div class="nav-list-wrap">
+						<ul class="list-inline footer-nav-list">
+                            
+							
+							
+                            <li>
+								<a href="https://www.broadcom.com/products/">Products</a>
+							</li>
+                            
+                            <li>
+								<a href="https://www.broadcom.com/solutions/">Solutions</a>
+							</li>
+                            
+                            <li>
+								<a href="https://www.broadcom.com/support/">Support and Services</a>
+							</li>
+                            
+                            <li>
+								<a href="https://www.broadcom.com/company/">Company</a>
+							</li>
+                            
+                            <li>
+								<a href="https://www.broadcom.com/how-to-buy/">How To Buy</a>
+							</li>
+                            
+                            
+                            
+						</ul>
+					</div>
+					<div class="col-12 copyright-text" tabindex="0">
+
+					
+							
+								Copyright © 2005-2025 Broadcom. All Rights Reserved. The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.
+                            
+
+                    </div>
+					<div class="footer-policies-wrap">
+						<ul class="list-inline policies-list">
+                        
+							
+							
+                            <li>
+								<a href="https://www.broadcom.com/company/legal/privacy-policy">Privacy</a>
+							</li>
+                            
+                            <li>
+								<a href="https://www.broadcom.com/company/citizenship/supplier-responsibility">Supplier Responsibility</a>
+							</li>
+                            
+                            <li>
+								<a href="https://www.broadcom.com/company/legal/terms-of-use/">Terms of Use</a>
+							</li>
+                            
+                            <li>
+								<a href="https://www.broadcom.com/sitemap">Sitemap</a>
+							</li>
+                            
+                            
+                            
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section class="col-12 col-lg-4 footer-right">
+				<div class="d-none d-sm-block">
+					<!-- // tablet and desktop social media icons here -->
+					<ul class="list-inline social-icons">
+                    	    
+							
+							
+                            <li>
+
+							<a target="_blank" class="twitter" href="https://www.twitter.com/Broadcom" aria-label="twitter">
+								<i class="fab fa-twitter"></i>
+							</a>
+							</li>
+                            
+                            <li>
+
+							<a target="_blank" class="linkedin" href="https://www.linkedin.com/company/broadcom" aria-label="linkedin">
+								<i class="fab fa-linkedin"></i>
+							</a>
+							</li>
+                            
+                            <li>
+
+							<a target="_blank" class="youtube" href="https://www.youtube.com/c/broadcom" aria-label="youtube">
+								<i class="fab fa-youtube"></i>
+							</a>
+							</li>
+                            
+                            
+                            
+
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+</footer></div>
+
+   <div class="swagger-field d-none">
+      <div class="swagger swagger-ui parbase">
+	
+
+
+</div>
+
+   </div>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'94429861ab645425',t:'MTc0Nzk4Mjc3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

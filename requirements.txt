@@ -1,0 +1,15 @@
+pydantic>=2.0
+pydantic-settings>=2.0
+neo4j>=5.16.0
+llama-index>=0.10.0
+redis>=5.0.0
+requests>=2.31.0
+urllib3>=2.0.0
+llama-index-graph-stores-neo4j>=0.1.0
+llama-index-llms-ollama>=0.1.0
+llama-index-embeddings-ollama>=0.1.0
+llama-index-vector-stores-redis>=0.1.0
+pymupdf
+PyMuPDF 
+transformers 
+pillow 
